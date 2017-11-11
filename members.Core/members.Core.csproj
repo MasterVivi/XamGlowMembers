@@ -33,12 +33,29 @@
     <Compile Include="AppStart.cs" />
     <Compile Include="ViewModels\MembersViewModel.cs" />
     <Compile Include="Models\Member.cs" />
+    <Compile Include="Services\Network\IAPIService.cs" />
+    <Compile Include="Services\Network\APIService.cs" />
+    <Compile Include="Services\Proxy\IMembersProxy.cs" />
+    <Compile Include="Services\Network\AuthenticatedHttpClientHandler.cs" />
+    <Compile Include="Models\Interfaces\IMember.cs" />
+    <Compile Include="Models\Interfaces\IMembership.cs" />
+    <Compile Include="Models\Interfaces\IModelIdentifier.cs" />
+    <Compile Include="Models\DTOs\MemberDTO.cs" />
+    <Compile Include="Models\DTOs\MembershipDTO.cs" />
+    <Compile Include="Models\Membership.cs" />
+    <Compile Include="Utilities\Converters\UnixDateTimeConverter.cs" />
+    <Compile Include="Models\ResponseWrapper.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Services\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Models\" />
-    <Folder Include="DTOs\" />
+    <Folder Include="Services\Network\" />
+    <Folder Include="Services\Proxy\" />
+    <Folder Include="Models\Interfaces\" />
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="Utilities\" />
+    <Folder Include="Utilities\Converters\" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="MvvmCross.Platform">
@@ -47,9 +64,40 @@
     <Reference Include="MvvmCross.Core">
       <HintPath>..\packages\MvvmCross.Core.5.4.2\lib\portable-net45+win+wpa81+wp80\MvvmCross.Core.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.InteropServices.RuntimeInformation">
+      <HintPath>..\packages\System.Runtime.InteropServices.RuntimeInformation.4.3.0\lib\netstandard1.1\System.Runtime.InteropServices.RuntimeInformation.dll</HintPath>
+    </Reference>
+    <Reference Include="Refit">
+      <HintPath>..\packages\Refit.3.1.0\lib\netstandard1.1\Refit.dll</HintPath>
+    </Reference>
+    <Reference Include="ModernHttpClient">
+      <HintPath>..\packages\modernhttpclient.2.4.2\lib\Portable-Net45+WinRT45+WP8+WPA81\ModernHttpClient.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Primitives">
+      <HintPath>..\packages\System.ComponentModel.Primitives.4.1.0\lib\netstandard1.0\System.ComponentModel.Primitives.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.TypeConverter">
+      <HintPath>..\packages\System.ComponentModel.TypeConverter.4.1.0\lib\netstandard1.0\System.ComponentModel.TypeConverter.dll</HintPath>
+    </Reference>
+    <Reference Include="AutoMapper">
+      <HintPath>..\packages\AutoMapper.5.2.0\lib\netstandard1.1\AutoMapper.dll</HintPath>
+    </Reference>
+    <Reference Include="Splat">
+      <HintPath>..\packages\Splat.2.0.0\lib\netstandard1.1\Splat.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\netstandard1.1\Acr.UserDialogs.dll</HintPath>
+    </Reference>
+    <Reference Include="Acr.UserDialogs.Interface">
+      <HintPath>..\packages\Acr.UserDialogs.6.5.1\lib\netstandard1.1\Acr.UserDialogs.Interface.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\packages\Refit.3.1.0\build\netstandard1.1\refit.targets" Condition="Exists('..\packages\Refit.3.1.0\build\netstandard1.1\refit.targets')" />
 </Project>
