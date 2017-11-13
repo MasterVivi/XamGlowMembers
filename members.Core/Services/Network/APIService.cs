@@ -65,7 +65,7 @@ namespace members.Core.Services.Network
             var cancellationToken = new CancellationTokenSource();
 
             // Make call for data
-            var response = await MembersService.GetAll(cancellationToken.Token, page);
+            var response = await MembersService.GetAll(cancellationToken.Token, page, email, firstName, surname);
             // Read response
             var json = await response.Content.ReadAsStringAsync();
             // Process json

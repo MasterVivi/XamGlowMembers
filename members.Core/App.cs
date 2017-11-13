@@ -1,4 +1,5 @@
-﻿using members.Core.Models;
+﻿using Acr.UserDialogs;
+using members.Core.Models;
 using members.Core.Models.DTOs;
 using members.Core.Models.Interfaces;
 using members.Core.Services.Network;
@@ -16,6 +17,7 @@ namespace members
         {
             // Register general classes for Mvx
             Mvx.ConstructAndRegisterSingleton<IAPIService, APIService>();
+            Mvx.RegisterSingleton<IUserDialogs>(UserDialogs.Instance);
 
             // Register the AppStart functionality as a sinleton to the
             // given interface

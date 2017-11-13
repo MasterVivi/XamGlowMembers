@@ -2,6 +2,7 @@
 using Foundation;
 using members.Core.Models;
 using MvvmCross.Binding.BindingContext;
+using MvvmCross.Binding.iOS.Views;
 using UIKit;
 
 namespace members.iOS.Cells
@@ -15,13 +16,18 @@ namespace members.iOS.Cells
         public static readonly NSString Key = new NSString("MemberCell");
         public static readonly UINib Nib;
 
+        // Lazy image loader
+        private MvxImageViewLoader _imageLoader;
+
         static MemberCell()
         {
             Nib = UINib.FromName(Key, NSBundle.MainBundle);
         }
 
         protected MemberCell(IntPtr handle) : base(handle)
-        {}
+        {
+            _imageLoader = new MvxImageViewLoader(() => ImageView);
+        }
 
         /// <summary>
         /// Bind outlet values to Member object passed in list
@@ -31,27 +37,8 @@ namespace members.iOS.Cells
             var set = this.CreateBindingSet<MemberCell, Member>();
             set.Bind(_txt_member_name).To(vm => vm.Name);
             set.Bind(_txt_member_email).To(vm => vm.Email);
+            set.Bind(_imageLoader).To(vm => vm.ImageUrl);
             set.Apply();
         }
-
-        /// <summary>
-        /// Applies the theme.
-        /// </summary>
-        protected override void ApplyTheme() {}
-
-        /// <summary>
-        /// Binds to language.
-        /// </summary>
-        protected override void BindToLanguage() {}
-
-        /// <summary>
-        /// Adds the handlers.
-        /// </summary>
-        protected override void AddHandlers() {}
-
-        /// <summary>
-        /// Removes the handlers.
-        /// </summary>
-        protected override void RemoveHandlers() {}
     }
 }

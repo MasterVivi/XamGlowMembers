@@ -44,7 +44,6 @@ namespace Oneview.Connect
 		{
 			MvxTrace.TaggedTrace(MvxTraceLevel.Diagnostic, "HttpClient", "Making request: " + request.RequestUri);
 			MvxTrace.TaggedWarning("ConnectTrace.Network", string.Format("Request headers: '{0}'", request.Headers));
-			MvxTrace.TaggedWarning("ConnectTrace.Network", string.Format("Request content: '{0}'", request.Content));
 
 			return await ExecuteRequest(request, cancellationToken);
 		}
